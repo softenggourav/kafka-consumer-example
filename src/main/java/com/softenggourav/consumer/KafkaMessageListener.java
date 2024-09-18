@@ -1,0 +1,41 @@
+package com.softenggourav.consumer;
+
+import com.softenggourav.dto.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.TopicPartition;
+import org.springframework.stereotype.Service;
+
+@Service
+public class KafkaMessageListener {
+
+    Logger log = LoggerFactory.getLogger(KafkaMessageListener.class);
+
+
+    @KafkaListener(topics = "softenggourav-topic1",groupId = "sg-group", 
+                    topicPartitions = {@TopicPartition(topic = "softenggourav-topic1",partitions = {"2"})})
+    public void consumeEvents(String messsage) {
+        log.info("consumer consume the events {} ", messsage);
+    }
+
+    // @KafkaListener(topics = "softenggourav-demo",groupId = "sg-group")
+    // public void consumeEvents(Customer customer) {
+    //     log.info("consumer consume the events {} ", customer.toString());
+    // }
+
+//    @KafkaListener(topics = "softenggourav-demo1",groupId = "sg-group")
+//    public void consume2(String message) {
+//        log.info("consumer2 consume the message {} ", message);
+//    }
+//
+//    @KafkaListener(topics = "softenggourav-demo1",groupId = "sg-group")
+//    public void consume3(String message) {
+//        log.info("consumer3 consume the message {} ", message);
+//    }
+//
+//    @KafkaListener(topics = "javatechie-demo1",groupId = "sg-group")
+//    public void consume4(String message) {
+//        log.info("consumer4 consume the message {} ", message);
+//    }
+}
