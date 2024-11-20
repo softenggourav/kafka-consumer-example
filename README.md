@@ -1,0 +1,1 @@
+Wrote code to consume 1 million data point from producer and related topic. Visualize all the data entry with Offset Explorer and tested data entry in case of failure in node and restarting of server.
